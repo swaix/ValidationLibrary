@@ -30,7 +30,7 @@ annotation class EmailType
 
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FIELD)
-annotation class PasswordType
+annotation class PasswordType(val pattern: String = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d@!#\$%^&+=.]{8,}\$")
 
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FIELD)
@@ -72,7 +72,7 @@ open class ValidItem {
                         }
                         is EmailType -> addIfError(item != null && !Patterns.EMAIL_ADDRESS.matcher(item.toString()).matches(), field)
                         is PasswordType -> {
-                            addIfError(item != null && !validateStringAndPattern("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d@!#\$%^&+=.]{8,}\$", item.toString()), field)
+                            addIfError(item != null && !validateStringAndPattern(it.pattern, item.toString()), field)
                         }
                         is NumberBetween -> {
                             val actualNumberValue = item.toString().toDoubleOrNull() ?: Double.NaN

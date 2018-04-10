@@ -25,7 +25,7 @@ Add it in your root build.gradle at the end of repositories:
 
 ```	
 	dependencies {
-	        compile 'com.github.swaix:ValidationLibrary:-SNAPSHOT'
+	        compile 'com.github.swaix:ValidationLibrary:1.0.0'
 	}
 ```
 
@@ -57,3 +57,5 @@ data class RegisterItem(
 ## Authors
 
 * **Alessandro Finocchiaro**  - [SwaiX](https://github.com/swaix)
+
+

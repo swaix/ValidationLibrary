@@ -25,7 +25,7 @@ Add it in your root build.gradle at the end of repositories:
 
 ```	
 	dependencies {
-	        compile 'com.github.swaix:ValidationLibrary:1.2.0'
+	        compile 'com.github.swaix:ValidationLibrary:1.1.0'
 	}
 ```
 

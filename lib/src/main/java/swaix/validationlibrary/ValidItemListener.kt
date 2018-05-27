@@ -14,5 +14,4 @@ interface ValidItemListener {
 
     fun onNotValidField(fieldView: View, correctValue: Any) {}
 
-
 }

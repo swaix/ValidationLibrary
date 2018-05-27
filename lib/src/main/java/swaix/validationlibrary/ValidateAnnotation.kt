@@ -43,6 +43,7 @@ annotation class Bind(val id: Int = -1)
 @Target(AnnotationTarget.FIELD)
 annotation class ErrorMessage(val message: Int = -1)
 
+@Suppress("unused")
 open class ValidItem {
 
     var delay = 600
@@ -145,10 +146,18 @@ open class ValidItem {
 
     private fun bindViews(view: View, field: Field, error: Int, unknownFormat: ((View, Field, Int) -> Unit)?) {
         when (view) {
-            is CompoundButton -> setSwitchListener(view, field)
-            is TextView -> setTextViewWatcher(view, field, error)
-            is TextInputLayout -> setTextViewWatcher(view.editText as TextView, field, error)
-            else -> unknownFormat?.invoke(view, field, error)
+            is CompoundButton -> {
+                setSwitchListener(view, field)
+            }
+            is TextView -> {
+                setTextViewWatcher(view, field, error)
+            }
+            is TextInputLayout -> {
+                setTextViewWatcher(view.editText as TextView, field, error)
+            }
+            else -> {
+                unknownFormat?.invoke(view, field, error)
+            }
         }
     }
 

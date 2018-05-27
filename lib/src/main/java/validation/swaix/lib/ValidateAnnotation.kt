@@ -1,7 +1,6 @@
 package swaix.validationlibrary
 
 import android.support.design.widget.TextInputLayout
-import android.support.v7.widget.SwitchCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
@@ -146,18 +145,10 @@ open class ValidItem {
 
     private fun bindViews(view: View, field: Field, error: Int, unknownFormat: ((View, Field, Int) -> Unit)?) {
         when (view) {
-            is SwitchCompat -> {
-                setSwitchListener(view, field)
-            }
-            is TextView -> {
-                setTextViewWatcher(view, field, error)
-            }
-            is TextInputLayout -> {
-                setTextViewWatcher(view.editText as TextView, field, error)
-            }
-            else -> {
-                unknownFormat?.invoke(view, field, error)
-            }
+            is CompoundButton -> setSwitchListener(view, field)
+            is TextView -> setTextViewWatcher(view, field, error)
+            is TextInputLayout -> setTextViewWatcher(view.editText as TextView, field, error)
+            else -> unknownFormat?.invoke(view, field, error)
         }
     }
 

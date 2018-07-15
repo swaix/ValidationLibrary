@@ -210,21 +210,29 @@ open class ValidItem {
                     Int::class.java -> {
                         if (value.isBlank())
                             value = "0"
+                        if (value == "." || value == ",")
+                            value = "0."
                         field.set(this@ValidItem, value.toInt())
                     }
                     Long::class.java -> {
                         if (value.isBlank())
                             value = "0"
+                        if (value == "." || value == ",")
+                            value = "0."
                         field.set(this@ValidItem, value.toLong())
                     }
                     Float::class.java -> {
                         if (value.isBlank())
                             value = "0"
+                        if (value == "." || value == ",")
+                            value = "0."
                         field.set(this@ValidItem, value.toFloat())
                     }
                     Double::class.java -> {
                         if (value.isBlank())
                             value = "0"
+                        if (value == "." || value == ",")
+                            value = "0."
                         field.set(this@ValidItem, value.toDouble())
                     }
                 }
